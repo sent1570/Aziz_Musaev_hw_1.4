@@ -5,6 +5,14 @@
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/img_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -12,9 +20,10 @@
         android:textSize="26sp"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:layout_marginStart="32dp"
         android:text="Title"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_item"
 
         />
 
@@ -26,7 +35,7 @@
         android:textColor="@color/black"
         android:text="Description"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
 
         />
 
@@ -34,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc"
+        app:layout_constraintTop_toBottomOf="@id/img_item"
         android:layout_marginTop="12dp"
 
 

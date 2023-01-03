@@ -2,6 +2,7 @@ package com.example.aziz_musaev_hw_14.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aziz_musaev_hw_14.databinding.TaskItemBinding
 
@@ -27,6 +28,7 @@ private var taskList = arrayListOf<TaskModel>()
         fun bind(taskModel: TaskModel) {
 binding.tvTitle.text = taskModel.title
             binding.tvDesc.text = taskModel.description
+            binding.imgItem.setImageURI(taskModel.imgUri.toUri())
         }
 
     }

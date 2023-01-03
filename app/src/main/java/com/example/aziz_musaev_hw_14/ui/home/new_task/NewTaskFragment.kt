@@ -6,16 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.example.aziz_musaev_hw_14.R
 import com.example.aziz_musaev_hw_14.databinding.FragmentNewTaskBinding
+import com.example.aziz_musaev_hw_14.ui.home.TaskModel
 
 
 class NewTaskFragment : Fragment() {
-
+var imgUri: String = ""
     private lateinit var binding: FragmentNewTaskBinding
+
+    var mGetContent: ActivityResultLauncher<String> = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri -> binding.imgNewTask.setImageURI(uri)
+    imgUri = uri.toString()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +38,19 @@ binding = FragmentNewTaskBinding.inflate(LayoutInflater.from(context),container,
 
     private fun initListeners() {
      binding.btnSave.setOnClickListener{
-         setFragmentResult("new_task", bundleOf("title" to binding.etTitle.text.toString(),"desc" to binding.etDesc.text.toString()))
+         setFragmentResult("new_task", bundleOf("data" to TaskModel(
+             imgUri,
+             binding.etTitle.text.toString(),
+         binding.etDesc.text.toString(),
+             )))
          findNavController().navigateUp()
      }
+        binding.imgNewTask.setOnClickListener{
+            mGetContent.launch("image/*");
+        }
     }
 
     private fun initViews() {
-
     }
 
 

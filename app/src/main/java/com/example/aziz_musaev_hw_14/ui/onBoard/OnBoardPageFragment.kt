@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.aziz_musaev_hw_14.R
 import com.example.aziz_musaev_hw_14.databinding.FragmentOnBoardBinding
 import com.example.aziz_musaev_hw_14.databinding.FragmentOnBoardPageBinding
+import com.example.aziz_musaev_hw_14.utils.Preferences
 
 
 class OnBoardPageFragment(var listenerSkip:() ->Unit,var listenerNext:() ->Unit) : Fragment() {
@@ -41,6 +42,7 @@ listenerSkip.invoke()
 
         binding.btnStart.setOnClickListener{
             findNavController().navigate(R.id.navigation_home)
+            Preferences(requireContext()).setBoardingShowed(true)
         }
     }
 

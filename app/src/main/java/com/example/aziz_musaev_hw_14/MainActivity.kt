@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aziz_musaev_hw_14.databinding.ActivityMainBinding
+import com.example.aziz_musaev_hw_14.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +31,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.newTaskFragment
             )
         )
+
+        if (Preferences(applicationContext).isBoardingShowed()){
+            navController.navigate(R.id.navigation_home)
+        } else{
+            navController.navigate(R.id.onBoardFragment)
+        }
+
         navController.navigate(R.id.onBoardFragment)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
