@@ -18,10 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="26sp"
-        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginStart="32dp"
-        android:text="Title"
+        android:text="@string/title_2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_item"
 
@@ -32,7 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="22sp"
-        android:textColor="@color/black"
         android:text="Description"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintStart_toStartOf="@id/tv_title"
@@ -40,6 +38,7 @@
         />
 
     <View
+        android:id="@+id/view_item"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black"

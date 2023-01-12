@@ -6,4 +6,30 @@
     <string name="title_profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="title_2">Title</string>
+    <string name="username">UserName</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="gender">Gender</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_number">Enter number</string>
+    <string name="enter_gender">Enter gender</string>
+    <string name="enter_date_of_birth">Enter date of birth</string>
+    <string name="account_delete">Account delete</string>
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+    <string name="skip">SKIP</string>
+    <string name="here_you_can_write_down_something_important_or_make_a_schedule_for_tomorrow">Here you can write down something important or make a schedule for tomorrow:)</string>
+    <string name="title_onboardpage">Title</string>
+    <string name="title_onBoardPage">Title</string>
+    <string name="confirm">Confirm</string>
+    <string name="send">Send</string>
+    <string name="enter_code">Enter code</string>
+    <string name="description_auth">Description</string>
+    <string name="todo">TODO</string>
 </resources>

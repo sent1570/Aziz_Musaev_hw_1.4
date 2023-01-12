@@ -11,6 +11,7 @@ import com.example.aziz_musaev_hw_14.R
 import com.example.aziz_musaev_hw_14.databinding.FragmentOnBoardBinding
 import com.example.aziz_musaev_hw_14.databinding.FragmentOnBoardPageBinding
 import com.example.aziz_musaev_hw_14.utils.Preferences
+import com.google.firebase.auth.FirebaseAuth
 
 
 class OnBoardPageFragment(var listenerSkip:() ->Unit,var listenerNext:() ->Unit) : Fragment() {
@@ -18,6 +19,7 @@ class OnBoardPageFragment(var listenerSkip:() ->Unit,var listenerNext:() ->Unit)
 private lateinit var binding :FragmentOnBoardPageBinding
 
 
+    private var auth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,9 +41,13 @@ listenerNext.invoke()
         binding.btnSkip.setOnClickListener{
 listenerSkip.invoke()
         }
-
         binding.btnStart.setOnClickListener{
-            findNavController().navigate(R.id.navigation_home)
+            if (auth.currentUser!= null){
+                findNavController().navigateUp()
+            }
+        else{
+            findNavController().navigate(R.id.authFragment)
+        }
             Preferences(requireContext()).setBoardingShowed(true)
         }
     }
@@ -55,6 +61,7 @@ listenerSkip.invoke()
             binding.btnSkip.isVisible = data.isLast ==  false
             binding.btnNext.isVisible = data.isLast ==  false
             binding.btnStart.isVisible = data.isLast ==  true
+
         }
     }
 
