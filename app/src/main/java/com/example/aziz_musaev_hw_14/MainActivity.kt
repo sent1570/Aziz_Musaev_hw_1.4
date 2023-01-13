@@ -43,19 +43,38 @@ class MainActivity : AppCompatActivity() {
                 }
         else if (auth.currentUser == null){
             navController.navigate(R.id.authFragment)
+            navView.visibility = View.GONE
         }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener{
+
                 _, destination, _ ->
+            if (destination.id == R.id.navigation_home && auth.currentUser == null && Preferences(applicationContext).isBoardingShowed()){
+                navController.navigate(R.id.authFragment)
+            }
+
+            if (destination.id == R.id.onBoardFragment && Preferences(applicationContext).isBoardingShowed()){
+                navController.navigate(R.id.authFragment)
+            }
+
+
             if (destination.id == R.id.newTaskFragment|| destination.id == R.id.onBoardFragment|| destination.id == R.id.authFragment){
                 navView.visibility = View.GONE
             }else navView.visibility = View.VISIBLE
+if (destination.id == R.id.navigation_home && auth.currentUser == null){
+    navView.visibility = View.GONE
+}
 
-if(destination.id == R.id.onBoardFragment || destination.id == R.id.authFragment){
+
+            if(destination.id == R.id.onBoardFragment || destination.id == R.id.authFragment){
     supportActionBar?.hide()
 }
+            if (destination.id == R.id.navigation_home && auth.currentUser != null){
+                supportActionBar?.show()
+            }
+
         }
     }
 }
