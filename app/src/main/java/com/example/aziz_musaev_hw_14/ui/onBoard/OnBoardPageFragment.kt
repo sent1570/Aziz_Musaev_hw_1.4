@@ -14,17 +14,17 @@ import com.example.aziz_musaev_hw_14.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
 
 
-class OnBoardPageFragment(var listenerSkip:() ->Unit,var listenerNext:() ->Unit) : Fragment() {
+class OnBoardPageFragment(var listenerSkip: () -> Unit, var listenerNext: () -> Unit) : Fragment() {
 
-private lateinit var binding :FragmentOnBoardPageBinding
+    private lateinit var binding: FragmentOnBoardPageBinding
 
 
     private var auth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentOnBoardPageBinding.inflate(LayoutInflater.from(context),container,false)
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentOnBoardPageBinding.inflate(LayoutInflater.from(context), container, false)
         return binding.root
     }
 
@@ -35,32 +35,31 @@ private lateinit var binding :FragmentOnBoardPageBinding
     }
 
     private fun initListeners() {
-        binding.btnNext.setOnClickListener{
-listenerNext.invoke()
+        binding.btnNext.setOnClickListener {
+            listenerNext.invoke()
         }
-        binding.btnSkip.setOnClickListener{
-listenerSkip.invoke()
+        binding.btnSkip.setOnClickListener {
+            listenerSkip.invoke()
         }
-        binding.btnStart.setOnClickListener{
-            if (auth.currentUser!= null){
+        binding.btnStart.setOnClickListener {
+            if (auth.currentUser != null) {
                 findNavController().navigateUp()
+            } else {
+                findNavController().navigate(R.id.authFragment)
             }
-        else{
-            findNavController().navigate(R.id.authFragment)
-        }
             Preferences(requireContext()).setBoardingShowed(true)
         }
     }
 
     private fun initViews() {
-        arguments.let{
+        arguments.let {
             val data = it?.getSerializable("onBoard") as BoardModel
             binding.tvTitleBoard.text = data.title
             binding.tvDescBoard.text = data.description
             data.img?.toInt()?.let { it1 -> binding.imgBoard.setImageResource(it1) }
-            binding.btnSkip.isVisible = data.isLast ==  false
-            binding.btnNext.isVisible = data.isLast ==  false
-            binding.btnStart.isVisible = data.isLast ==  true
+            binding.btnSkip.isVisible = data.isLast == false
+            binding.btnNext.isVisible = data.isLast == false
+            binding.btnStart.isVisible = data.isLast == true
 
         }
     }

@@ -10,7 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
+
 }
 rootProject.name = "Aziz_Musaev_hw_1.4"
 include ':app'

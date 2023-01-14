@@ -11,28 +11,29 @@ import com.example.aziz_musaev_hw_14.databinding.FragmentOnBoardBinding
 
 class OnBoardFragment : Fragment() {
 
-private lateinit var binding: FragmentOnBoardBinding
+    private lateinit var binding: FragmentOnBoardBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentOnBoardBinding.inflate(LayoutInflater.from(context),container,false)
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentOnBoardBinding.inflate(LayoutInflater.from(context), container, false)
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = BoardAdapter(childFragmentManager,this::onSkipClick,this::onNextClick)
+        val adapter = BoardAdapter(childFragmentManager, this::onSkipClick, this::onNextClick)
         binding.vpBoard.adapter = adapter
         binding.springDotsIndicator.attachTo(binding.vpBoard)
     }
-private  fun onSkipClick()
-{
-    binding.vpBoard.currentItem = 2
-}
-    private fun onNextClick(){
+
+    private fun onSkipClick() {
+        binding.vpBoard.currentItem = 2
+    }
+
+    private fun onNextClick() {
         binding.vpBoard.currentItem += 1
     }
 }

@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
-    private lateinit var auth:FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var binding: FragmentProfileBinding
     private lateinit var preferences: Preferences
     private var mGetContent: ActivityResultLauncher<String> = registerForActivityResult(
@@ -30,10 +30,8 @@ class ProfileFragment : Fragment() {
     ) { uri ->
 
 
-
-    binding.ivProfile.loadImage(uri.toString())
-    Preferences(requireContext()).saveImageUri(uri.toString())
-
+        binding.ivProfile.loadImage(uri.toString())
+        Preferences(requireContext()).saveImageUri(uri.toString())
 
 
     }
@@ -51,11 +49,8 @@ class ProfileFragment : Fragment() {
     }
 
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-               binding.ivProfile.setBackgroundResource(R.drawable.ic_baseline_photo_camera_24)
 
         preferences = Preferences(requireContext())
         initListener();
@@ -64,14 +59,14 @@ class ProfileFragment : Fragment() {
         binding.etProfile.addTextChangedListener {
             preferences.setTextShowed(binding.etProfile.text.toString())
         }
-        binding.btnExit.setOnClickListener{
+        binding.btnExit.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             Toast.makeText(requireContext(), "Аккаунт был удален", Toast.LENGTH_SHORT).show()
         }
 
 
-//        binding.etProfile.setText(preferences.isTextShowed())
     }
+
     private fun initListener() {
         binding.ivProfile.setOnClickListener {
             mGetContent.launch("image/*");

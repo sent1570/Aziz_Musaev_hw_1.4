@@ -1,5 +1,6 @@
 package com.example.aziz_musaev_hw_14.services
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -12,6 +13,7 @@ import com.example.aziz_musaev_hw_14.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
+@SuppressLint("MissingFirebaseInstanceTokenRefresh")
 class FirebaseNotifications:FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         Log.e("ololo", "onMessageReceived: "+ message.notification?.title)

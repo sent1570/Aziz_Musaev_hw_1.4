@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.onBoard.OnBoardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_board"
         android:layout_width="match_parent"

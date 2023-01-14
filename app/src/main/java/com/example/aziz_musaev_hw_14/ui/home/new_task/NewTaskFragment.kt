@@ -28,7 +28,7 @@ class NewTaskFragment : Fragment() {
     private var mGetContent: ActivityResultLauncher<String> = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri ->
-            binding.imgNewTask.setImageURI(uri)
+binding.imgNewTask.loadImage(uri.toString())
             imgUri = uri.toString()
 
     }
@@ -38,6 +38,7 @@ class NewTaskFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentNewTaskBinding.inflate(LayoutInflater.from(context), container, false)
+        binding.imgNewTask.loadImage(imgUri)
         initViews()
         initListeners()
 
@@ -69,8 +70,6 @@ class NewTaskFragment : Fragment() {
     }
 
     private fun updateData(taskModel: TaskModel) {
-
-        binding.imgNewTask.setBackgroundResource(R.drawable.ic_baseline_photo_camera_24)
         taskModel.title = binding.etTitle.text.toString()
         taskModel.description = binding.etDesc.text.toString()
         taskModel.imgUri = imgUri
@@ -82,8 +81,9 @@ class NewTaskFragment : Fragment() {
         if (arguments != null) {
             binding.btnSave.text = "Update"
             task = arguments?.getSerializable("edit") as TaskModel
-            if (imgUri != ""){          binding.imgNewTask.setImageURI(task.imgUri.toUri())}
 
+
+            binding.imgNewTask.loadImage(task.imgUri)
             binding.etTitle.setText(task.title)
             binding.etDesc.setText(task.description)
         } else {

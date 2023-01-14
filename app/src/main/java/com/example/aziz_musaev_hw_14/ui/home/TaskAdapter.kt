@@ -39,7 +39,6 @@ class TaskAdapter(private var onClick:(Int)-> Unit ,
             fun updateImage(){
                 binding.imgItem.loadImage("")
             }
-            binding.imgItem.setBackgroundResource(R.drawable.ic_baseline_photo_camera_24)
             binding.tvTitle.text = taskModel.title
             binding.tvDesc.text = taskModel.description
             // binding.imgItem.setImageURI(taskModel.imgUri.toUri())
@@ -59,6 +58,7 @@ class TaskAdapter(private var onClick:(Int)-> Unit ,
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addTasks(list: List<TaskModel>) {
         taskList.clear()
         taskList.addAll(list)

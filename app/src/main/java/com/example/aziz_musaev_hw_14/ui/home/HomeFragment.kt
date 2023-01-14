@@ -69,13 +69,14 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.sort) {
             val items = arrayOf("Дата", "По алфавиту")
             val builder = AlertDialog.Builder(requireContext())
             with(builder) {
                 setTitle("Сортировать по:")
-                setItems(items) { dialog, which ->
+                setItems(items) { _, which ->
                     when (which) {
                         0 -> {
                             taskAdapter.addTasks(App.db.dao().getListByDate())
@@ -92,6 +93,7 @@ class HomeFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_home, menu)
         super.onCreateOptionsMenu(menu, inflater)

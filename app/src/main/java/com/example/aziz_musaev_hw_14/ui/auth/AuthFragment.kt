@@ -1,5 +1,6 @@
 package com.example.aziz_musaev_hw_14.auth
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +32,7 @@ class AuthFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.countryCode.setOnCountryChangeListener {
@@ -49,12 +51,9 @@ class AuthFragment : Fragment() {
                 binding.etLayoutPhone.error = "Введите номер телефона"
             }
             binding.btnConfirm.setOnClickListener {
-                if (binding.etCode.text.toString() == ""){
-                    binding.etLayoutCode.error = "Введите код"
-                }
-                else{
+
                     sendCode()
-                }
+
 
             }
         }
@@ -83,7 +82,7 @@ class AuthFragment : Fragment() {
                     binding.countryCode.isVisible=false
                     binding.etLayoutPhone.isVisible = false
                     binding.btnSend.isVisible = false
-                    binding.etLayoutCode.isVisible = true
+                    binding.etCode.isVisible = true
                     binding.btnConfirm.isVisible = true
                     super.onCodeSent(verificationCode, p1)
                 }
@@ -99,7 +98,7 @@ class AuthFragment : Fragment() {
 
         val credential = correctCode?.let { it1 ->
             PhoneAuthProvider.getCredential(it1,
-                binding.etCode.text.toString())
+                binding.etCode.enteredCode)
         }
         if (credential != null) {
             signInWithPhoneAuthCredential(credential)

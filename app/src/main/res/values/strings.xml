@@ -25,11 +25,14 @@
     <string name="next">Next</string>
     <string name="skip">SKIP</string>
     <string name="here_you_can_write_down_something_important_or_make_a_schedule_for_tomorrow">Here you can write down something important or make a schedule for tomorrow:)</string>
-    <string name="title_onboardpage">Title</string>
+    <string name="title_onBoardPage_2">Title</string>
     <string name="title_onBoardPage">Title</string>
     <string name="confirm">Confirm</string>
     <string name="send">Send</string>
     <string name="enter_code">Enter code</string>
     <string name="description_auth">Description</string>
     <string name="todo">TODO</string>
+    <string name="todo_2">TODO</string>
+    <string name="description_2">Description</string>
+    <string name="todo__2">TODO</string>
 </resources>
