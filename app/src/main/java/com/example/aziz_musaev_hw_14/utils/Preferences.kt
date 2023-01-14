@@ -19,16 +19,49 @@ class Preferences(context: Context) {
     fun saveImageUri(imgUri:String){
         sharedPref.edit().putString(IMAGE,imgUri).apply()
     }
-    fun getString(): String? {
-        return sharedPref.getString(GET_STRING,"")
+    fun getUserName(): String? {
+        return sharedPref.getString(GET_USER_NAME,"")
     }
 
-    fun setTextShowed(string: String){
-        sharedPref.edit().putString(GET_STRING, string).apply()
+    fun setUserName(string: String){
+        sharedPref.edit().putString(GET_USER_NAME, string).apply()
+    }
+    fun getEmail(): String? {
+        return sharedPref.getString(GET_EMAIL,"")
+    }
+
+    fun setEmail(string: String){
+        sharedPref.edit().putString(GET_EMAIL, string).apply()
+    }
+    fun getPhone(): String? {
+        return sharedPref.getString(GET_PHONE,"")
+    }
+
+    fun setPhone(string: String){
+        sharedPref.edit().putString(GET_PHONE, string).apply()
+    }
+    fun getGender(): String? {
+        return sharedPref.getString(GET_GENDER,"")
+    }
+
+    fun setGender(string: String){
+        sharedPref.edit().putString(GET_GENDER, string).apply()
+    }
+    fun getDateOfBirth(): String? {
+        return sharedPref.getString(GET_DATE_OF_BIRTH,"")
+    }
+
+    fun setDateOfBirth(string: String){
+        sharedPref.edit().putString(GET_DATE_OF_BIRTH, string).apply()
     }
     companion object{
         const val BOARDING_SHOW = "board"
         const val IMAGE = "img"
-        const val GET_STRING = "string"
+        const val GET_USER_NAME = "User name"
+        const val GET_EMAIL = "Email"
+        const val GET_PHONE = "Phone"
+        const val GET_GENDER = "Gender"
+        const val GET_DATE_OF_BIRTH = "Date of birth"
+
     }
 }

@@ -55,9 +55,25 @@ class ProfileFragment : Fragment() {
         preferences = Preferences(requireContext())
         initListener();
         binding.ivProfile.loadImage(preferences.getImageUri())
-        binding.etProfile.setText(preferences.getString())
-        binding.etProfile.addTextChangedListener {
-            preferences.setTextShowed(binding.etProfile.text.toString())
+        binding.etProfileUserName.setText(preferences.getUserName())
+        binding.etProfileEmail.setText(preferences.getEmail())
+        binding.etProfilePhone.setText(preferences.getPhone())
+        binding.etProfileGender.setText(preferences.getGender())
+        binding.etProfileDateOfBirth.setText(preferences.getDateOfBirth())
+        binding.etProfileUserName.addTextChangedListener {
+            preferences.setUserName(binding.etProfileUserName.text.toString())
+        }
+        binding.etProfileEmail.addTextChangedListener {
+            preferences.setEmail(binding.etProfileEmail.text.toString())
+        }
+        binding.etProfilePhone.addTextChangedListener {
+            preferences.setPhone(binding.etProfilePhone.text.toString())
+        }
+        binding.etProfileGender.addTextChangedListener {
+            preferences.setGender(binding.etProfileGender.text.toString())
+        }
+        binding.etProfileDateOfBirth.addTextChangedListener {
+            preferences.setDateOfBirth(binding.etProfileDateOfBirth.text.toString())
         }
         binding.btnExit.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
